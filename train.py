@@ -23,8 +23,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 
 ## Pipeline
-cat_col = [1,2,3]
-num_col = [0,4]
+cat_col = [1, 2, 3]
+num_col = [0, 4]
 
 transform = ColumnTransformer(
     [
@@ -69,5 +69,5 @@ with open("./Results/metrics.txt", "w") as outfile:
 ## Saving the model file
 model_path = "./Model/drug_pipeline.pkl"
 
-with open(model_path, mode = "bw") as f:
-    pickle.dump(pipe, file = f)
+with open(model_path, mode="bw") as f:
+    pickle.dump(pipe, file=f)
