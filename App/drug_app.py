@@ -1,8 +1,10 @@
 import gradio as gr
-import skops.io as sio
+import pickle
 
-pipe = sio.load("./Model/drug_pipeline.skops", trusted=True)
+model_path = "./Model/drug_pipeline.pkl"
 
+with open(model_path, 'rb') as file:
+    pipe = pickle.load(file)
 
 def predict_drug(age, sex, blood_pressure, cholesterol, na_to_k_ratio):
     """Predict drugs based on patient features.
