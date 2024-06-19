@@ -1,5 +1,5 @@
 import pandas as pd
-import skops.io as sio
+# import skops.io as sio
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
@@ -67,4 +67,4 @@ with open("./Results/metrics.txt", "w") as outfile:
     outfile.write(f"\nAccuracy = {round(accuracy, 2)}, F1 Score = {round(f1, 2)}")
 
 ## Saving the model file
-sio.dump(pipe, "./Model/drug_pipeline.skops")
+# sio.dump(pipe, "./Model/drug_pipeline.skops")
