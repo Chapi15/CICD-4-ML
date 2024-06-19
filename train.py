@@ -1,5 +1,5 @@
 import pandas as pd
-# import skops.io as sio
+import pickle
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
@@ -33,6 +33,7 @@ transform = ColumnTransformer(
         ("num_scaler", StandardScaler(), num_col),
     ]
 )
+
 pipe = Pipeline(
     steps=[
         ("preprocessing", transform),
@@ -42,7 +43,6 @@ pipe = Pipeline(
 
 ## Training
 pipe.fit(X_train, y_train)
-
 
 ## Model Evaluation
 predictions = pipe.predict(X_test)
@@ -67,4 +67,7 @@ with open("./Results/metrics.txt", "w") as outfile:
     outfile.write(f"\nAccuracy = {round(accuracy, 2)}, F1 Score = {round(f1, 2)}")
 
 ## Saving the model file
-# sio.dump(pipe, "./Model/drug_pipeline.skops")
+model_path = "./Model/drug_pipeline.pkl"
+
+with open(model_path, mode = "bw") as f:
+    pickle.dump(pipe, file = f)
